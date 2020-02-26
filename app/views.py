@@ -22,3 +22,10 @@ def my_area(request, id):
 
   return render(request, 'area.html', {'title':title,'neighborhood':neighborhood})
 
+def join(request, id):
+  current_user = request.user
+  neighborhood = Neighborhood.objects.get(id=id)
+  neighborhood.occupants_count.add(current_user)
+  neighborhood.save()
+  return redirect("hood")
+

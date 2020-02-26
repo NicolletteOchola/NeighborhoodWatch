@@ -29,3 +29,17 @@ def join(request, id):
   neighborhood.save()
   return redirect("hood")
 
+@login_required(login_url='/accounts/login/')
+def new_business(request):
+  current_user = request.user
+  if request.method == 'POST':
+    form = NewBusinessForm(request.POST, request.FILES)
+    if form.is_valid():
+       post = form.save(commit=False)
+       post.profile = current_user
+       post.save()
+    return redirect('index')
+  else:
+    form = NewBusinessForm()
+  return render(request, 'new_business.html', {"form": form})
+

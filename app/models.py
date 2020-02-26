@@ -19,3 +19,11 @@ class Neighborhood(models.Model):
   def get_all_neighborhoods(cls):
     neighborhoods = cls.objects.all()
     return neighborhoods
+
+class Profile(models.Model):
+   user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+   neighborhood = models.ManyToManyField(Neighborhood)
+   email = models.EmailField()
+   profile_pic = ImageField(manual_crop ='1080x1080')
+   bio = HTMLField()
+

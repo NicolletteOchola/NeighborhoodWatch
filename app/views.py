@@ -8,3 +8,8 @@ from .forms import ProfileForm, NewBusinessForm, NewPostForm
 
 # Create your views here.
 
+@login_required(login_url='/accounts/login/')
+def index(request):
+  neighborhoods = Neighborhood.get_all_neighborhoods()
+  return render(request, 'index.html',{"neighborhoods":neighborhoods})
+

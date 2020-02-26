@@ -45,4 +45,22 @@ class Business(models.Model):
     businesses = cls.objects.all()
     return businesses
   
+class Post(models.Model): 
+  title = models.CharField(max_length=30)
+  description = HTMLField(max_length=70)
+  post_user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+  post_user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+  post_pic = ImageField(manual_crop ='1920x1080')
+
+  def save_post(self):
+    self.save()
   
+  def delete_post(self):
+    self.delete()
+
+  @classmethod
+  def get_all_posts(cls):
+    posts = cls.objects.all()
+    return posts
+   
+

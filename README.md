@@ -15,6 +15,14 @@ Nicollette Ochola
 - Users can view their profile page.
 - Users can use the side navigation bar to navigate to the home page, profile page as well, login and logout.
 
+## BDD
+| Behavior            | Input                         | Output                        |
+| ------------------- | ----------------------------- | ----------------------------- |
+| Users can sign up for an account | Input credentials in the registration form then click Sign Up | Users are prompted to login into their account |
+| Users can log into their account | Input the correct credentials of an existing account in the login form | Once verified, users are navigated to the home page where they can view available neighborhoods |
+| Users can view the details of a specific neighborhood | Click on a given neighborhood | Users are directed to the neighborhood's page where its details, business posts as well as an option to Join, are displayed |
+| Users can view their profiles | Click on Profile in the side navigation | Users are directed to their profile page with their profile information displayed |
+| Users can create business posts | Click on the Post Business option in the side navigation bar | User will be navigated to a new page with a form to create a new post |\
 
 ## Technologies Used
 - Django 1.11 (Python3.6)

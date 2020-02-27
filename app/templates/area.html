@@ -1,0 +1,130 @@
+{%extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+{{block.super}}
+
+
+<div class="container-fluid"
+  style="background-image: url({{ neighborhood.neighborhood_pic.cdn_url }}),linear-gradient(330deg, rgba(0, 21, 34, 0.57) 0%, rgba(52, 37, 54, 0.55) 100%); background-blend-mode: overlay; height: 500px; background-repeat:no-repeat; background-position: top; background-size: cover; background-position: center; margin-bottom: 4%; ">
+  <div class="container header text-center">
+    <div class="logo" style="padding-top: 10%;">
+      <!-- <img src="https://fontmeme.com/permalink/191202/6121727221ffd6093829725fab07df09.png" alt="thrasher-font"
+                border="0" style="padding: 5%;" class="img-fluid"> -->
+      <h2 style="font-family: 'Cinzel Decorative', cursive; color: #fff; font-size: 75px;" class="img-fluid"
+        id="n_name">
+        {{ neighborhood.neighborhood_name }}</h2>
+      <h2 style="font-family: 'Alatsi', sans-serif; color: #fff;"> <img src="{%static 'images/icons8-marker-25.png'%}"
+          alt="" class="img-fluid" style="padding-bottom: 10px;"> {{neighborhood.neighborhood_location}}</h2>
+      <div class="text-white">
+        {% for member in neighborhood.occupants_count.all%}
+        <p>{{member.username}}</p>
+        {%endfor%}
+      </div>
+      <a href="{%url 'join' neighborhood.id%}"
+        class="btn btn-dark rounded rounded-pill rounded-pill"><strong>Join</strong></a>
+    </div>
+
+  </div>
+  <div class="row pt-5 c_items text-center">
+    <div class="col-md-4">
+      <img src="{%static 'images/icons8-police-96 (1).png'%}" alt="Local Police Contact" class="item img-fluid">
+      <p style="font-family: 'Alatsi', sans-serif; color: #fff;">{{ neighborhood.police_contact }}</p>
+    </div>
+    <div class="col-md-4">
+      <img src="{%static 'images/icons8-hospital-sign-96 (1).png'%}" alt="Local Health Department Contact"
+        class="img-fluid">
+      <p style="font-family: 'Alatsi', sans-serif; color: #fff;">{{ neighborhood.health_contact }}</p>
+    </div>
+    <div class="col-md-4">
+      <img src="{%static 'images/icons8-crowd-100 (1).png'%}" alt="Neighborhood Population" class="img-fluid">
+      <p style="font-family: 'Alatsi', sans-serif; color: #fff;"></p>
+    </div>
+  </div>
+
+
+</div>
+<div class="container">
+  <div class="container article-content">
+    <h1 style="font-family: 'Alegreya Sans SC', sans-serif;" class="text-center">Businesses</h1>
+    {%for bs in neighborhood.businesses.all%}
+    {% autoescape on %}
+    <div class="row" id="article-row">
+      <div class="col-md-5">
+        <img class="fadeInUp details img-fluid" src="{{bs.bs_pic.cdn_url}}" width="100%">
+      </div>
+
+      <div class="col-md-7">
+        <p><strong>{{bs.bs_name}}</strong></p>
+        <hr>
+        <p>{{bs.about | safe}}</p>
+
+        <div class="animated fadeInUp details">
+          <p class="font-weight-normal">by <em>{{bs.bs_user}} </em></p>
+
+
+          <p>{{neighborhood.neighborhood_location}}</p>
+
+          <p class="font-weight-normal">Contact: <em>{{bs.bs_email}} </em></p>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+    {% endautoescape %}
+
+    {% empty %}
+
+    <div class="row">
+      <h2 class="text-center">No Businesses To Show</h2>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+<div class="container-fluid" style="background-color: #f1f4f7;">
+  <div class="container">
+    <h1 style="font-family: 'Alegreya Sans SC', sans-serif; padding: 2%;" class="text-center">Posts</h1>
+    {%for post in neighborhood.posts.all%}
+    {% autoescape on %}
+    <div class="row" id="article-row" style="border-radius: 20px;">
+      <div class="col-md-7">
+        <p><strong>{{post.title}}</strong></p>
+        <p>{{post.description | safe}}</p>
+
+        <div class="animated fadeInUp details">
+          <p class="font-weight-normal">by <em>{{post.post_user}} </em></p>
+
+
+          <p>{{neighborhood.neighborhood_location}}</p>
+
+
+
+
+
+        </div>
+
+      </div>
+      <div class="col-md-5">
+        <img class="fadeInUp details img-fluid" src="{{user.profile.profile_pic.cdn_url}}"
+          style="object-fit: cover; object-position: 100% 0; width: 180px; height: 180px; border-radius: 50%;">
+      </div>
+
+    </div>
+    {% endautoescape %}
+
+    {% empty %}
+
+    <div class="row">
+      <h2 class="text-center">No Posts To Show</h2>
+    </div>
+    {%endfor%}
+  </div>
+
+</div>
+
+
+
+{% endblock %}

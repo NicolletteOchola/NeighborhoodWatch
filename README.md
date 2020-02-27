@@ -5,7 +5,7 @@ Neighbourhood watch
 Nicollette Ochola
 
 ## Description
-- A private network for your neighbourhood
+- A private network for your neighbourhood, that allows members of the same community to post businesses and anything that concerns the members of the community. 
 
 ## User Stories
 - Users create an account.

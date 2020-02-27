@@ -75,6 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'neighbourhood.wsgi.application'
 
+UPLOADCARE = {
+    'pub_key': 'a6d9bc81c8c3095d8e2f',
+    'secret': '823a04a83991d3b91d6b',
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'pyuploadcare.dj',
     'phonenumber_field',
     'bootstrap4',
-    'linkapp.apps.LinkappConfig',
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [

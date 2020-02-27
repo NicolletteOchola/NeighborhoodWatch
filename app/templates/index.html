@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+
+<div class="container-fluid"
+  style="background-image: url(https://wheeltalk.org/wp-content/uploads/2019/07/WheelTalk_WheelieBoys_NYC_ScreenShot12.jpg),linear-gradient(330deg, rgba(0, 21, 34, 0.87) 0%, rgba(52, 37, 54, 0.85) 100%); background-blend-mode: overlay; height: 452px; background-repeat:no-repeat; background-position: top; background-size: cover; background-position: center; margin-bottom: 4%; ">
+  <div class="container header text-center">
+    <div class="logo" id="homelogo">
+      <img src="https://fontmeme.com/permalink/191202/6121727221ffd6093829725fab07df09.png" alt="thrasher-font"
+        border="0" style="padding: 5%;" class="img-fluid">
+      <h2 style="font-family: 'Alegreya Sans SC', sans-serif; color: #fff;" id="hm_h">Discover Your Neighborhood</h2>
+      <h1 style="font-family: 'Alegreya Sans SC', sans-serif; color: #fff;" id="hm_h">A Private Network for Your
+        Neighborhood. </h1>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="container text-center">
+  <h1 style="font-family: 'Alegreya Sans SC', sans-serif;">Neighborhoods</h1>
+
+  <!-- Looping through images   -->
+
+
+  <div class="row">
+
+
+    {% for neighborhood in neighborhoods %}
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+      <div class="portfolio-wrap ">
+        <div class="portfolio-wrap hovereffect">
+          <a href="{%url 'hood' neighborhood.id%}" style="width:100%">
+            <img src="{{neighborhood.neighborhood_pic.cdn_url}}" href="" class="img-fluid" alt="Image">
+            <div class="overlay">
+              <div class="text">{{ neighborhood.neighborhood_name }}</div>
+              <!-- <div class="loco text-white"><strong>{{ neighborhood.neighborhood_location }}</strong></div> -->
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+
+    {% empty %}
+  </div>
+
+
+  <div class="row">
+    <h2 class="text-center">Neighborhoods Unavailable</h2>
+  </div>
+  {% endfor %}
+
+  <!-- Image details modal -->
+
+
+
+</div>
+
+
+
+{% endblock %}

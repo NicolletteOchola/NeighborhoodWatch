@@ -36,7 +36,7 @@ cd Neighbourhood-Watch-master
 - To run the tests on the application run `python3.6 manage.py test app`
 
 ## Known Bugs
-No known bugs, if you encounter any, feel free to contact me.
+Posts are added from the admin side, user can not directly add posts and businesses.
 
 
 ## Contacts

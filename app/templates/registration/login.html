@@ -1,0 +1,37 @@
+{% extends "registration/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-5 bg-light pt-5 pb-3">
+            <h2 class="text-center">Neighbourhood Watch</h2>
+            <hr>
+            <p class="text-center">Sign in to continue</p>
+            {% if form.errors %}
+            <p>Password or Username is incorrect</p>
+            {% endif %}
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form action="/accounts/login/" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-warning" value="Log in">
+                        </div>
+                        <input type="hidden" name="next" value="/">
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Don't have an account? <span><a href="/accounts/register/">Sign Up</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

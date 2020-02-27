@@ -1,10 +1,10 @@
 # Neighbourhood Watch
-This is a web application that seeks to imitate the existing awwards website. Its one where users can submit projects/sites and get them reviewed and rated by their fellow developers
+
 
 ## Author
 Nicollette Ochola
 
-## Descriptiob
+## Description
 - A private network for your neighbourhood
 
 ## User Stories
